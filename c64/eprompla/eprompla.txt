@@ -1,0 +1,177 @@
+           C64 PLA chip replacement using an EPROM and adapter
+               latest updates and corrections  6-27-2018
+
+EPROMS ARE NOT CREATED EQUAL AND NEITHER ARE C64 MOTHERBOARDS. READ THIS
+NEW ARTICLE TO THE END FOR THE FINAL ANSWER REGARDING ANY PLA REPLACEMENT!
+
+A special "THANK YOU" goes to Francois Leveille for his contributions
+here! He now has a drop-in replacement for the C64 PLA: email him at
+eslapion@videotron.ca for "PLAnkton". They are $15.50 US each plus shipping
+and he uses PayPal for payment. He offers a 25% discount for 10 or more.
+
+For those who still want to make their own replacement PLA with an EPROM, 
+read on...
+
+FIRST, SOME HISTORY...
+     The supply of replacement ICs for Commodore computers has been
+shrinking since Commodore stopped making chips a few decades agos. Most
+of what you find now are used "pulls" from existing equipment, some 
+good, some bad. The most common failure in the C64 has been IC U17, a 
+pre-programmed 28 pin generic 82S100 programmable logic array or PLA.
+That IC & the SID run very hot and should have been heat sinked. They
+were in later versions of the 64. Since the supply of obsolete
+un-programmed 82S100 ICs has likewise dried up, a way to replace the
+Commodore PLA with some other kind of device has been discussed many 
+times on the newsgroups and Commodore forums. Even the original PLA 
+Commodore used over the years was not the same for all boards. That 
+IC had to be tailored to match the increasing speed of other chips in 
+later versions  of the C64, and Commodore started making their own MOS
+chips with the 906114-01 number. They were slightly faster than the 
+original 82S100 PLA chips and some boards needed to be "tailored" to 
+correct the timing. Example: R42 and C204 on boards 250425 & 250466.
+Note: the latest true C64C short board 250469 in the white case does 
+not use the earlier PLA but a larger, more integrated IC. It runs cool 
+and failures are rare. Only the earlier boards have the older PLA.
+     Note that the early C64 board 326298 that has an original working 
+PLA and an SX with a similar old PLA showed one strange symptom, namely 
+an Epyx FASTLOAD cart would not work. Instead of a normal opening 
+screen with FASTLOAD and a flashing cursor, only C64 and FASTLOAD were 
+displayed on bootup. The cart would not load a disk directory nor would 
+it load a program but trying just locked the computer. Replacing the 
+old PLA with a newer one restored normal operation.
+
+MAKING YOUR OWN PLA SUBSTITUTE WITH AN EPROM:
+
+     A 64K EPROM programmed with code from a working PLA and rewired 
+via a circuit board or other adapter to cross-connect a few pins has 
+had some success in duplicating the logic of the original PLA. Note 
+that the code for the EPROM must match the pinout of the adapter that 
+goes with it! The modification I found back then took only a few pin 
+swaps to make it work. One old 300nS 27512 UV EPROM worked in several 
+boards with just a single capacitor on the /CASRAM line but it's not 
+as easy as that! It may boot fine but other problems are not obvious.
+     Making the substitute PLA is pretty straightforward. With a few
+pins rewired via an adapter (schematic is readpla.jpg) I made with two
+"sandwiched" IC sockets, I used my EPROM burner to copy the code from a
+working PLA chip. The burner reads it as if it were a 27C512 EPROM and
+the resulting file pla.bin has a checksum of hex DAA0. That code was
+burned into a standard 27C512 EPROM. I then used another cross-wired
+adapter (schematic is eprompla.jpg) to install the substitute PLA in my
+C64.
+     Testing a fabricated PLA substitute involved 1. observing the bytes
+free on the opening screen to see if it's normal, 2. looking for
+"glitches", random color shifts or odd characters anywhere on the screen
+while a program is running, 3. testing with several different cartridges
+such as Epyx FASTLOAD and CBM Jupiter Lander (which refused to load in
+one board when everything else seemed to work), and a passing grade
+using my C64 diagnostic cart. However, that's not good enough! Read on.
+     With a "burner" on my PC, I began experimenting with various types
+of EPROMs when my stock of PLA chips was depleted. The original PLA
+averaged a rather speedy 50nS. The best information I had early on was
+that a very fast IC was needed to simulate it. Most reprogrammable UV
+EPROMs are much slower at 150 to 300nS and I already had some of those.
+A one-time-programmable (OTP) Atmel AT27C512R45 seemed fast enough with
+its 45nS response time and they were cheap at the time, so a batch of
+the OTP chips was purchased and some adapters made out of "sandwiched"
+IC sockets. The resulting replacement ICs do work in many C64 boards but
+not in others, even ones with the same board number.
+     One of my C64 boards (250407) booted with just about any PLA
+substitute EPROM from the slowest 300nS to the fastest OTP but an
+earlier board was -very- fussy about a sub-PLA. Results with those
+boards varied from blank screen to less than the normal bytes free at
+start-up to random character color errors or program crashes... common
+indicators of a failing OEM PLA or bad RAM. The sub-PLA could be made to
+work in some boards by replacing the VIC, the MPU and/or the CIAs. For
+example, a CPU with a later code date worked in a board with a sub-PLA
+whereas the earlier CPU chip wouldn't even boot up (blank screen). My 
+oldest 64 board, a 1982 326298, gave me the most trouble. Most of the 
+chips in it are early versions. Swapping some of them out with newer 
+ones made that board work. I concluded that C64 ICs work within a narrow 
+"window" of acceptable pulse timing, neither too fast nor too slow. The 
+use of a substitute PLA in some boards obviously creates timing errors, 
+some fatal (blank screen) and others producing subtle screen "glitches" 
+and program crashes. I was later informed about problems that are not 
+obvious with these tests alone.
+     One early workaround I found was to add a small capacitor from
+ground to the replacement IC output pin 18, the /CAS line to the RAM,
+which adds a bit of delay to those pulses. Later C64 boards from the
+factory did just that... used a resistor-capacitor combination (82 ohms
+and 150pF) to create that delay as their new boards needed the 
+compensation. One user found that an ST M27C512-90B6 EPROM was the best 
+substitute using an EPROM only as a replacement PLA. I made up a bunch 
+of those but soon ran out my stock. The problem now is that IC is no 
+longer available! CAUTION: There were some counterfeit chips being sold 
+on Ebay from UTSource that were actually re-stamped Winbond chips and 
+they do not work without filtering! They may boot but are not true ST 
+chips and produce the same problems as Atmel and other EPROMs.
+     I used IC sockets to make my adapters but such a "module" that
+plugs into a board mounted IC socket may cause intermittent operation if
+the board socket has loose contacts, which they often do. A better way
+is an adapter with round pins that are thicker than the standard
+replacement types. Instead of sockets, I tried a 28 pin compression
+"header" that is normally used with ribbon cable, and soldered the IC 
+to it. Those 28 pin headers are available from Jameco Electronics as
+#99670 and they make excellent adapters. Ready made PC board adapters
+are also available from Jim Brain at Retro-Innovations. His board does
+the cross-wiring so jumpers are not needed. Lastly, OTP EPROMs don't
+need heat sinking like the original PLA should have been. EPROMs draw
+less current and run cool. For example, the M27C512-90B6 used only 9mA,
+whereas the original Commodore PLA needs 95mA (and runs very hot). 
+Francois Leveille's PLAnkton runs cool at only 22mA. It's the -only- 
+sub-PLA I recommend now. 
+
+**************************************************************************
+
+NOW, THE FINAL ANSWER...
+     As stated earlier, the ST M27C512-90B6 had certain characteristics
+that allowed its safe use as a C64 PLA substitute without any added
+filter components but that IC is now NLA. The Atmel series of OTP EPROMs
+(one time programmable) are still available and are a good choice for a
+replacement PLA but it takes some effort to make them work reliably. The
+best substitute seems to be the 45nS version (70nS also works) although
+all EPROM based PLA replacements need "filtering" to make them work
+properly and not cause damage to the computer or peripherals. If any
+EPROM is used, the output lines MUST be filtered to prevent damage to
+CMOS devices such as a JiffyDOS Kernal upgrade or external carts such as
+the 1541Ultimate. This filtering takes the form of series resistors of
+150 ohms on six of the EPROM output data lines.
+     When an EPROM does the "calculations" needed as a sub PLA, it can
+sometimes drive all outputs low at the same time for a fraction of a
+second. Original NMOS chips in the computer may be tolerant of such
+errors but newer CMOS will not be. The EPROM outputs must also have
+small capacitors of 150pF to ground on the downstream side of those
+resistors to provide high frequency filtering of the "spikes" or noise
+pulses generated by the EPROM. That was not necessary with the original
+PLA because it was a different kind of logic chip. With filtering, the
+replacement PLA will work fine and is safe to use. I tested it on all my
+boards from the earliest 326298 and 250407 (the most plentiful) as well
+as the later 250425 and 250466. Note that those two later boards already
+have an 82 ohm and 150pF components on their motherboards /CASRAM line
+from the factory, so those parts are not used on the sub PLA module for
+the 250425 and 250466. The EPROM IC pin 18 /CASRAM line is therefore
+wired directly to the plug for those last two C64 boards only. The
+/CHAROM line pin 15 is also wired direct to the plug in all sub PLA
+modules as it needs no "correction". 
+
+     Bottom line: EPROM PLA substitutes can be safely made to work but
+that requires buffering of its data outputs so bus conflicts do not
+cause damage or improper operation. It's a lot of work but some users
+will want to "roll their own", and this seems the best way to do it.
+
+Ray Carlsen
+
+* readpla.jpg is a schematic of adapter to read original PLA code
+* pla.bin is the code from an original PLA IC read in a burner
+* filter adapter prototype.jpg is my first adapter with filters
+* adapter with filters.jpg is a schematic of the new adapter
+* header adapter.jpg is the header I now use to make adapters
+* adapter assembly.jpg shows the assembly before soldering the IC
+* finished.jpg shows the final assembly with SMD 180 ohm resistors
+
+Addendum 11-7-2015
+     I tried the Jens Schoenfeld SuperPLA V3 in two of my boards, namely
+the 326298 and 250407 (the most common) and it's not fully compatible. 
+The computers boot fine but disk access with an Epyx FASTLOAD cart is 
+corrupted and freezes. In addition, the long PLA module will not fit on 
+my 250407 board unless I remove the SID chip (also socketed). 
+

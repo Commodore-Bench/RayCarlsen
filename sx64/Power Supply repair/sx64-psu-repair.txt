@@ -1,0 +1,121 @@
+                 REPAIRING THE SX POWER SUPPLY
+             latest updates or corrections 1-29-2017
+
+Here is one case history and follow-up that should help...
+
+"I checked my non-working SX64 and the problem is the power supply
+isn't working at all hence the SX64 appears dead. The fuse is not
+blown and there is 117VAC on the inputs on the power supply PCB so the
+ON/OFF switch is OK. The 9VAC is there (coming from the small
+transformer T2 blue wires). The same transformer also outputs 15.4VAC
+(on 2 red wires) and that goes to the 2 middle pins of bridge REC2
+which outputs 18.65VDC on the 2 outer pins and goes into the 12V mini-
+board. There's nothing coming out of the 12V mini-board and there's no
+power going into the 5V mini-board. Q1 is not shorted (tested out of
+circuit). The AC line input goes to the bridge REC1 and the output
+measures 158VAC. I checked the transistors, diodes etc and nothing
+appears to be shorted and no obvious blown-up damage. Also, it looks
+like there is nothing going into or coming out of T1."
+
+     It is apparent the switcher is not running. The absence of blown
+fuses or burned parts tells me it is simply failing to start up for
+some reason. A downstream overload would either blow fuses or make the
+PS shut down. Note that it's never a good idea to run a switching
+power supply without a load of at least 10 percent of it's maximum. To
+safely run the SX PS disconnected from the computer boards, I use an
+old automobile #1157 tail light as an artificial load. The heavy
+filament goes across the +5VDC output (orange wires) and the smaller
+filament goes to the +12VDC output (red wires). The black wires are
+grounds. If you don't have anything to apply as a load and you just
+want to check it quickly to see if it is working it can be run totally
+unconnected for a short period of time. Connect the probes of a
+digital multi-meter to the output connectors on the power supply
+(black probe to black wire and red probe to red wire or red probe to
+orange wire). Set the meter to DC Volts in the range 0-20 then power
+on for 5 seconds. If the supply is working the DMM will show voltage.
+
+     At this point, it would be helpful to know how the PS circuit
+works when all is normal. The input of the bridge rectifier REC1
+converts AC line voltage to DC, about 150VDC when unloaded (switcher
+not running). To reduce that to the lower voltages needed by the
+computer, a small transformer is "switched" on and off at a high
+frequency 400 times a second (400Hz). This allows much smaller
+components to be used at a high efficiency, unlike the old linear
+power supplies. To provide the pulsed drive for the main switch
+transistor Q1, the 12V sub-board oscillator IC1 is powered from line
+transformer T2, rectified by REC2 and filtered to about +18VDC. Pulses
+from IC1 feed transformer T3 which in turn drives transistor Q1. The
+secondary of transformer T1 is the rectified and filtered +12VDC
+source. Control feedback from the output side of this switching
+circuit (R11) is sent back to IC1 to keep the 12V output constant.
+This provides voltage regulation to compensate for line voltage and
+load variations. The +5VDC source is derived from the +12VDC source.
+It comes in at transistor Q3 and is switched by pulses from IC2 on the
+5V sub board. Control feedback for the 5VDC source is sent from
+resistor R20 back to IC2 to keep the +5VDC output constant. The
+inductors L2 through L6 are simply filters to reduce noise on the DC
+outputs. Note because of the high speed switching it is not possible
+to measure the input or output on the transformers... it will usually
+measure 0V or something less than 1V but will be moving slightly up
+and down. A digital multi-meter is not fast enough to check it. The
+only way the outputs of T1 or T3 can be checked is with an
+oscilloscope. Transformers are fairly robust and usually don't fail so
+generally the voltage at the transformer does not need to be checked.
+
+     I have to admit at this point I don't have a lot of experience
+repairing the SX power supply simply because it is so robust. For the
+above failure (no fuses blown or burned parts), the most likely cause
+of the failure is the old capacitors opening up inside... which is
+exactly what happened with this one; the small electrolytic capacitors
+on the sub boards were found to be out of specification when the ESR
+was measured. All switch-mode power supplies are critical of their
+capacitors and only good quality caps should be used to replace them.
+In this particular case the small 10uf and 4.7uf capacitors are used
+to start-up the IC's on the sub boards so they must be good. IC1
+(MB3759) is used to drive transformer T3 and thus transistor Q1 so it
+is a critical part in the operation of the SX power supply. The
+obsolete MB3759 IC can be replaced with a TL494 if it's bad. This IC
+frequently fails if the capacitors that are connected to it go bad,
+and that is what happened in this case. Apparently Fujitsu IC's are
+known to be frequent failure items in other hardware too, especially
+74-series TTL ICs. The tiny sub boards will have to be de-soldered
+from the main board to work on them. If IC1 is changed, add a socket so
+if it fails again in a few years it can easily be swapped for a good
+part without having to remove the sub board. One word of caution: If
+the switcher is not working, the main input filter cap C7 could hold a
+charge for a while after power off. The best way to check capacitors
+is something called an ESR meter. If one is not available, it's best to 
+just change the caps because they will be 30+ years old anyway. While 
+you have the PS apart, check the solder connections on the power 
+transistors and diodes. I've found a few that had broken loose and 
+caused intermittent operation.
+
+     120V and 230V SX power supplies are very similar but use
+different power transformers and transistors. The best way to run one
+on the alternate line or mains voltage is with a step-up or step-down
+transformer. Voltage converters come in various types and some cheaper
+converters used to run small toys are not recommended to run a
+switching PS. Be sure to use a converter that has an equivalent or
+higher rated wattage output. The best have what is called a "pure sine
+wave output".
+
+SWITCHER BASICS:
+     I can simplify it down to a very basic idea. You flip a switch and
+the light goes on (assuming an old incandescent bulb). The lamp gets
+full voltage... full power to me more precise. How about if you start
+flipping the switch on and off, and each "cycle" is exactly half and
+half. That represents a 50:50 duty cycle and the lamp gets full voltage
+each time but only half the power it did at full on. If you can vary the
+timing (which is what old light dimmers did), you have the basis of a
+switching power supply. Take a sample of the output and feed it back to
+control the timing of the on-pulses and you regulate the output.
+     Any switching power supply can self destruct and burn up. It's
+quite rare to find one that damages the equipment it feeds, but it can
+happen. Newer switchers have built in over-voltage and short circuit
+protection. Some can run unloaded. The older PC supplies would blow if
+-not- loaded, so I'm super cautious about telling a user it's OK to do
+that with any PS. 
+
+Ray Carlsen
+
+

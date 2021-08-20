@@ -1,0 +1,44 @@
+                 THE COMPUTER SAVER - SOLID STATE VERSION
+ A PROTECTION DEVICE FOR THE COMMODORE 64, LATE VERSION VIC20 & PLUS/4
+             Latest updates and/or corrections 4-25-2014
+
+     I have designed an all solid state version of the Saver. This one  
+doesn't have a relay but uses two power transistors as switches. The 
+circuit can be installed inside a computer, wired directly onto a short 
+length of cable with DIN connectors on each end (no case needed) or 
+installed inside a plastic case with the appropriate DIN cables attached. 
+Like the earlier Saver, these last two models are "stand alone" devices 
+and as such can be used with any C64 and its compatable power supply. The 
+cable-only version has a single "failsafe" status LED that lights up if 
+the Saver trips due to over-voltage from the power supply but it doesn't 
+have the 9VAC indicator (green LED). That LED circuit can be added if 
+desired.
+     Several parameters needed to be considered to implement an all solid 
+state Saver: 1. Using a transistor or other solid state device as a switch 
+means there will always be a slight voltage loss across the device at the 
+required current draw of the load, unlike a relay that switches the voltage 
+with no loss across its contacts. A C64 computer with cartridge plugged in 
+draws about 1 Amp and the voltage drop across this Saver is less than 150 
+millivolts (0.15V) which is negligible to normal operation of the computer. 
+2. The power used by the Saver circuit itself should be minimal compared to 
+the load the computer represents. This design draws about the same as the 
+relay Saver, approximately 50mA. The original CBM "brick" has a current 
+capacity of 1.5 Amps, so this added load is acceptable. 3. When the Saver 
+detects an excessive voltage rise from the power supply, it must switch the 
+power off quickly and completely. It would not be effective if it only 
+reduced the voltage by "regulating" it down since the Saver would then 
+dissipate a lot of heat. 4. Lastly, after the device has tripped, it must 
+not overheat or otherwise itself fail from the over-voltage (which could 
+go as high as eleven volts DC), even if left that way indefinitely.  
+     This Saver uses standard components. The switch transistors are PNP 
+silicons in a TO220 case, TIP32. Two are used in parallel to lower the 
+overall loss across them. The sense and the driver are 2N2222 but can be 
+any small signal type. The 4.7V zener diode is part of a voltage divider 
+with a trip point of 5.4 volts. If you are building your own Saver, it will 
+probably be necessary to "trim" the divider by adding a higher value 
+resistor across one of the two resistors to set the trip point at exactly 
+5.4 VDC. This requires an accurate voltmeter and variable power supply. I 
+offer an assembled and tested module for installation in a computer, and a 
+cable version with module installed and connectors on the ends. 
+
+Ray

@@ -1,0 +1,107 @@
+                       CMD RAMLINK PC BOARDS
+             latest updates and corrections 3-14-2013
+
+
+        EARLY MODEL (1990), MAIN BOARD IC'S
+ 
+ID        PART #         GENERIC IC            FUNCTION
+
+U1      RL-701002B	GAL20V8A-25LP	 
+U2      RL-701037D	GAL20V8A-25LP
+U3      RL-701018A      GAL16V8A-25LP
+U4      RL-701017A      GAL16V8A-25LP
+U5      RL-701003       27512           DOS EPROM, versions 1.40, 2.00, 2.01, ETC.
+U6                      74LS139N
+U7                      74AHCT74
+U8                      74AHCT74N
+U9                      7407
+U10                       N/A           BLANK SPACE
+U11                     D8255AC-5
+U12                     74LS174N
+U13                     6264LP-15       SRAM 
+U14                     74F157N
+U15                     74HCT193E
+U16                     74HC04AP
+U17                     74LS14	
+U18                     AN7807          3 TERMINAL REGULATOR
+U19                     74LS157NA
+U20                       N/A           BLANK SPACE
+
+Q1                      2N3906          TRANSISTOR, PNP, SIGNAL
+Q2                      TIP42C          TRANSISTOR, PNP, PWR, TO220
+Q3                      TIP41C          TRANSISTOR, NPN, PWR, TO220
+
+
+        LATE MODEL (1992), MAIN BOARD IC'S
+ 
+ID        PART #         GENERIC IC          FUNCTION
+
+U1      RL-701002D	GAL20V8A-25LP	 
+U2      RL-701037D	GAL20V8A-25LP
+U3      RL-701018A      GAL16V8A-25LP (ALT: RLDIRECT-A)
+U4      RL-701017C      GAL16V8A-25LP
+U5      RL-701003       27512           DOS EPROM, version 2.01
+U6                      74LS139N
+U7                      74HC109N
+U8                      74HC32BI
+U9                      7407
+U11                     D8255AC-2
+U12                     74LS174N
+U13                     HY6264P-12      SRAM 
+U14                     LM393N
+U15                     74HC14N
+U16     RL-701519A      GAL16V8A-25LP
+U17                     74LS14
+U18                     LM340TS (7805)  3 TERMINAL REGULATOR
+U19                     74LS157NA
+U21                     LM317
+
+Q1                      2N3906          TRANSISTOR, PNP, SIGNAL
+Q2                      TIP32C          TRANSISTOR, PNP, PWR, TO220
+Q3                      TIP31C          TRANSISTOR, NPN, PWR, TO220
+Q4                      2N3904          TRANSISTOR, NPN, SIGNAL
+Q5                      TIP32           TRANSISTOR, PNP, PWR, TO220
+
+
+
+        EARLY SIMM BOARD (1990) IC'S (no RTC)
+
+ID       PART #          GENERIC IC
+
+U1                      74HCT193E
+U2      RL-701102A      GAL20V8A-25LP
+U3                      74157
+U4                      74157
+U5                      74157
+U6                      TMP8255AP-5
+AND SIMM SOCKETS, FOUR BANKS
+
+
+        LATE SIMM BOARD (1992) IC'S (w/ RTC)
+
+ID       PART #          GENERIC IC
+
+U1      RL701606A RTC   GAL16V8-25LNC
+U2      RL701102B       GAL20V8A-25LP
+U3                      74157F
+U4                      74157F
+U5                      74157F
+U6                      72421B 1492C RTC 
+U7                      74HCT374N
+U8                      74HCT374N
+AND SIMM SOCKETS, FOUR BANKS
+
+********************************************************************************
+
+REPAIR PARTS FROM JEFF JARIAN AT MYTEC ELECTRONICS
+
+I offer replacement PLDs for CMD RLinks and CMD HDs as listed below:
+ 
+RLink U1, U3 set $49.90 (U1 GAL22V10B-25LP & U3 GAL16V8D-15LP)
+RLink U2 $39.95
+RLink U4 $29.95
+RLink U2R (upper-ram-board) $39.95
+RLink RTC PLD (upper-ram-board v2) $29.95
+RLink -or- HD RTC (OEM) Chip $12.95
+HD U13, U24, U27 set $119.95 
+

@@ -1,0 +1,11 @@
+						3-19-2017
+
+     Reading the code of the ROMs shows the name Bryce Nesbitt 1984. 
+The two 2764 EPROMs are DRVROM.BIN checksum 0E91 for the drive and
+and KERN.BIN checksum E2CB for the Kernal. I have a 1541FLASH! 
+setup with a cable between C64 and 1541 but was never able to get 
+it working to fastload programs. I did work out some of the drive 
+commands by just poking around with it. Not having any documention 
+back then, I gave up.  
+
+Ray

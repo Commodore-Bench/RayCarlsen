@@ -1,0 +1,11 @@
+						3-7-2017
+
+There is now an excellent drop-in replacement for the clock chip used in the 
+later C64 motherboards and the C128 series of computers. The original IC can 
+be either a 7701 or 8701. The replacement is called the TOLB (8701 upside down) 
+from Francois Leveille <eslapion@videotron.ca> in Canada. The module IC runs 
+cool, takes less power and will likely outlast the computer. I recently 
+purchased four TOLBs and am pleased to say they work very well. The NTSC 
+version is now available and a PAL version should be available soon. 
+
+Ray

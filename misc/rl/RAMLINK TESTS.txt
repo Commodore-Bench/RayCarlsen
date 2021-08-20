@@ -1,0 +1,58 @@
+
+                           TESTING THE CMD RAMLINK
+                latest additions and/or corrections 2-2-2015
+
+     Early version RAMLinks use the same power supply as a Commodore 1581 
+disk drive. It has a four wire DIN plug and outputs +5VDC at 1 Amp and +12VDC 
+at 0.5 Amps. The backup 6V battery for that RL uses a coax connector, center 
+conductor positive. The later version RAMLink uses a different power supply, 
+a single 9VDC 1 Amp wall adapter which connects to the RL with a coax 
+connector, center conductor positive. Its battery connects with a standard 
+1/8" mini-phone plug, tip positive. If you didn't get a battery and cable 
+with your newer RL unit, use a stereo plug for the connection. The reason is 
+that the space between the tip and sleeve is taken up with an unused ring 
+connection. That arrangement will prevent shorting of the plug when inserted 
+in or removed from the jack. Tape up the plug when disconnected from the RL
+unit so it doesn't short to any metal. Shorting the battery will burn its 
+wires!
+     A computer with RAMLink connected takes few seconds longer to boot 
+because it's installing the RL full native partition size as default at boot 
+time. If the internal SIMM board is bad or is unplugged, the computer will 
+boot quickly to its normal opening screen or may not boot, depending on what 
+the problem is with the RAM card. JiffyDOS is automatically installed from 
+the RAMLink because it's on the main board and is enabled by RL DOS. The 
+computer's own JiffyDOS MUST be switched off, otherwise the RL-computer 
+system will not boot or its operation will be erratic. 
+     An initial test of the RL (a directory read) will show the RAM size of 
+the of the on-board SIMM board -or- a RAM cart (you can't use both at the 
+same time) if you press the F1 key. That's the standard JiffyDOS directory 
+read command of the default RAM drive #16. If a disk drive is connected, F1 
+will read device 8 (the disk drive) but you can switch between drive 8 and 
+the RL drive 16 with CTRL-D or with the swap button on the RAMLink. 
+     For further tests, load RAMTOOLS from the utilities disk to delete the 
+default RL partition (which is the full size of all memory installed), then 
+make a new partition to emulate a 1541 (or other drive) and finally, use 
+MCOPY on the disk to copy an entire program disk over to the 1541 emulation 
+partition. Use the device 8 swap button and run the program from the RAM 
+disk. It loads very fast. I used Music Construction Set in my tests. 
+     If the plug on the RAMLink-to-computer connector is dirty or oxidized, 
+the computer may boot to a blank screen, a screen jumbled with characters or 
+it will be intermittent. Use a pencil eraser (the replacement kind that has 
+a triangular shape) to "polish" the connector contacts, then try the boot 
+again. The contacts are copper and will oxidize over time. They should look 
+shiny when clean. 
+     If you encounter any problem with bootup or use of the RAMLink, try 
+using the jumper cable supplied with the RL unit. The RL instructions say it 
+must be used with a C64 and may be necessary (try it without the cable first)
+with a C128. Sometimes it is required to correct the timing between devices. 
+That cable connects to R44 in all early versions of the C64. R44 is a pull 
+up resistor connected to U7 6510 CPU pin 28. For the short board 250469 in 
+the C64C, the cable connects to IC6 8500 CPU pin 28. In all versions of the 
+C128 including the European D and USA DCR, it connects to pin 41 of U11 PLA. 
+The other end of the jumper cable goes to either pin of the two-pin connector 
+in the RL opening just above the cart connector that plugs into the computer. 
+Note it may only fit one way. 
+
+Ray
+     
+
